@@ -20,15 +20,15 @@ const HomeLayout = () => {
       </nav>
 
       <main className="container mx-auto px-4 lg:px-0 2xl:py-20 py-3 grid md:grid-cols-12 gap-6">
-        <aside className="left col-span-3">
+        <aside className="left md:col-span-3">
           <LeftNavbar />
         </aside>
 
-        <section className="col-span-6">
+        <section className="md:col-span-6">
           <Outlet />
         </section>
 
-        <aside className="right col-span-3">
+        <aside className="right md:col-span-3">
           <RightNavbar />
         </aside>
       </main>

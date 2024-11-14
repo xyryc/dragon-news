@@ -4,7 +4,7 @@ const NewsCard = (props) => {
   const { news } = props || {};
 
   return (
-    <div className="card border">
+    <div className="card border rounded-lg">
       {/* Header */}
       <div className="flex items-center bg-base-200 px-5 py-4 rounded-t-lg">
         <img
@@ -13,7 +13,7 @@ const NewsCard = (props) => {
           className="w-10 h-10 rounded-full"
         />
         <div className="ml-3">
-          <h2 className="font-semibold">{news.author.name}</h2>
+          <h2 className="font-semibold">{news.author.name || "Zayd"}</h2>
           <p className="text-sm text-gray-500">{news.author.published_date}</p>
         </div>
         <div className="ml-auto flex items-center space-x-2 text-gray-500">
