@@ -19,7 +19,7 @@ const HomeLayout = () => {
         <Navbar />
       </nav>
 
-      <main className="container mx-auto px-4 lg:px-0 2xl:py-20 py-3 grid md:grid-cols-12 gap-3 2xl:gap-6">
+      <main className="container mx-auto px-4 lg:px-0 2xl:py-20 py-3 grid md:grid-cols-12 gap-6">
         <aside className="left col-span-3">
           <LeftNavbar />
         </aside>

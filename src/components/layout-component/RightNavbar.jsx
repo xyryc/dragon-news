@@ -1,4 +1,5 @@
 import FindUs from "../FindUs";
+import Qzone from "../Qzone";
 import SocialLogin from "../SocialLogin";
 
 const RightNavbar = () => {
@@ -6,6 +7,7 @@ const RightNavbar = () => {
     <div className="space-y-5">
       <SocialLogin />
       <FindUs/>
+      <Qzone/>
     </div>
   );
 };
