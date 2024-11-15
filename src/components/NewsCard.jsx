@@ -1,4 +1,5 @@
 import { FaShareAlt, FaStar, FaEye, FaBookmark } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const NewsCard = (props) => {
   const { news } = props || {};
@@ -38,7 +39,7 @@ const NewsCard = (props) => {
           {news.details.length > 100
             ? `${news.details.slice(0, 300)}...`
             : news.details}
-          <span className="font-semibold text-[#FF8C47]">Read More</span>
+          <Link  to={`/news/${news._id}`} className="font-semibold text-[#FF8C47]">Read More</Link>
         </p>
 
         <div className="divider my-5"></div>
