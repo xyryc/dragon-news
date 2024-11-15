@@ -1,18 +1,24 @@
-import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createNewUser, setUser } = useContext(AuthContext);
+  const { createNewUser, setUser, updateUserProfile } = useContext(AuthContext);
+  const [error, setError] = useState({});
+  const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     // get form data
     const form = new FormData(e.target);
-    // const name = form.get("name");
-    // const photo = form.get("photo");
+    const name = form.get("name");
+    if (name.length < 5) {
+      setError({ ...error, name: "name must be more than 5 character long" });
+      return;
+    }
+    const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
     // console.log({ name, photo, email, password });
@@ -23,6 +29,13 @@ const Register = () => {
         setUser(user);
         console.log(user);
         toast.success("User registered successfully.");
+        updateUserProfile({ displayName: name, photoURL: photo })
+          .then(() => {
+            navigate("/");
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       })
       .catch((error) => {
         toast.error(error.code, error.message);
@@ -50,6 +63,9 @@ const Register = () => {
               required
             />
           </div>
+          {error.name && (
+            <span className="text-xs text-red-500">{error.name}</span>
+          )}
 
           {/* photo url */}
           <div className="form-control">
