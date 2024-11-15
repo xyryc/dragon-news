@@ -1,10 +1,13 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const { userLogin, setUser } = useContext(AuthContext);
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -20,6 +23,7 @@ const Login = () => {
         const user = result.user;
         console.log(user);
         setUser(user);
+        navigate(location?.state ? location.state : "/");
         toast.success(`Logged in as ${user?.email}`);
       })
       .catch((error) => {
@@ -28,7 +32,7 @@ const Login = () => {
   };
 
   return (
-    <div className="min-h-screen flex justify-center items-center">
+    <div className="flex justify-center items-center pb-10">
       <div className="card bg-base-100 w-full max-w-md shrink-0 rounded-md p-10">
         <h2 className="font-semibold text-2xl text-center">
           Login your account
