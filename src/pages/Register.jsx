@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const Register = () => {
   const { createNewUser, setUser } = useContext(AuthContext);
@@ -10,8 +11,8 @@ const Register = () => {
 
     // get form data
     const form = new FormData(e.target);
-    const name = form.get("name");
-    const photo = form.get("photo");
+    // const name = form.get("name");
+    // const photo = form.get("photo");
     const email = form.get("email");
     const password = form.get("password");
     // console.log({ name, photo, email, password });
@@ -21,9 +22,10 @@ const Register = () => {
         const user = result.user;
         setUser(user);
         console.log(user);
+        toast.success("User registered successfully.");
       })
       .catch((error) => {
-        console.log("Error", error.code, error.message);
+        toast.error(error.code, error.message);
       });
   };
 
