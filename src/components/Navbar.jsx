@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import userIcon from "../assets/user.png";
 import { useContext } from "react";
 import { AuthContext } from "../provider/AuthProvider";
@@ -7,13 +7,28 @@ const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
 
   return (
-    <div className="flex justify-between items-center">
-      <div>{/* {user && user?.email} */}</div>
+    <div className="flex justify-between items-center flex-col md:flex-row gap-3">
+      <div>{user && user?.email}</div>
 
       <div className="nav space-x-5 text-gray-600 2xl:text-lg">
-        <Link to="/">Home</Link>
-        <Link to="/career">Career</Link>
-        <Link to="/about">About</Link>
+        <NavLink
+          className={({ isActive }) => (isActive ? "font-bold underline" : "")}
+          to="/"
+        >
+          Home
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "font-bold underline" : "")}
+          to="/career"
+        >
+          Career
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "font-bold underline" : "")}
+          to="/about"
+        >
+          About
+        </NavLink>
       </div>
 
       <div className="login flex items-center gap-4">

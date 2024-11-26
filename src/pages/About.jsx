@@ -25,7 +25,7 @@ const About = () => {
   ];
 
   return (
-    <div className="container mx-auto px-4 font-poppins">
+    <div className="container mx-auto px-4 font-poppins text-center">
       <Header />
       <LatestNews />
       <Navbar />
@@ -59,16 +59,19 @@ const About = () => {
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {teamMembers.map((member, index) => (
-              <div key={index} className="card bg-base-100 shadow-xl">
+              <div
+                key={index}
+                className="flex justify-center items-center flex-col text-center"
+              >
                 <figure>
                   <img
                     src={member.image}
                     alt={member.name}
-                    className="rounded-t-lg object-cover h-56 w-full"
+                    className="object-cover h-56 rounded-full"
                   />
                 </figure>
                 <div className="card-body">
-                  <h3 className="card-title">{member.name}</h3>
+                  <h3 className="text-xl font-bold">{member.name}</h3>
                   <p className="text-sm text-gray-600">{member.role}</p>
                   <p className="mt-2">{member.bio}</p>
                 </div>

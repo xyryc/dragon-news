@@ -133,10 +133,10 @@ const Career = () => {
         {/* Contact Section */}
         <div className="py-10 bg-gray-600 text-white text-center rounded-3xl">
           <h2 className="text-3xl font-semibold">Get in Touch</h2>
-          <p className="mt-4 max-w-2xl mx-auto">
+          <div className="mt-4 max-w-2xl mx-auto">
             Have questions or feedback? Reach out to us anytime at{" "}
             <p className="underline">career@dragonnews.com</p>
-          </p>
+          </div>
         </div>
       </div>
     </div>
